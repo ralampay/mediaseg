@@ -38,3 +38,5 @@ class Parse:
         print("Transcribing...")
         transcriber = Transcribe(audio_file=audio_file)
         transcriber.execute()
+
+        print(f"Average Speech Length: {transcriber.ave_speech_len}")

@@ -20,9 +20,13 @@ class Transcribe:
 
         #print(self.transcription)
 
+        self.ave_speech_len = 0.0
+
         for segment in self.segments:
             segment_start   = segment['start']
             segment_end     = segment['end']
+
+            self.ave_speech_len += segment_end - segment_start
 
             start_time  = str(0) + str(timedelta(seconds=int(segment['start'])))
             end_time    = str(0) + str(timedelta(seconds=int(segment['end'])))
@@ -33,3 +37,5 @@ class Transcribe:
 
             output = f"id: {id}\n{start_time} - {end_time}\n{text}\n\n"
             self.conversation += output
+
+        self.ave_speech_len = self.ave_speech_len / len(self.segments)

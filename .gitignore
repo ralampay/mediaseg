@@ -1,7 +1,7 @@
 runs/
 
 #jobs/*.sh
-
+*.mp3
 *.yaml
 *.yml
 
@@ -43,6 +43,7 @@ env/
 
 tmp/*.mp3
 tmp/*.wav
+tmp/*.mp4
 
 # Ignore 
 

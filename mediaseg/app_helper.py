@@ -9,3 +9,6 @@ def is_avi_file(file):
 
 def print_error(message):
     print(colored(f"Error: {message}", "red"))
+
+def get_filename(file_path):
+    return os.path.basename(file_path)

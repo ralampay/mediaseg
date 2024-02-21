@@ -18,6 +18,8 @@ class Transcribe:
         self.text           = self.transcription['text']
         self.segments       = self.transcription['segments']
 
+        self.content = []
+
         #print(self.transcription)
 
         self.ave_speech_len = 0.0
@@ -33,7 +35,16 @@ class Transcribe:
             text        = segment['text']
             id          = segment['id'] + 1
 
-            print(f"Segment {id}: {segment_start}:{segment_end}...")
+            self.content.append({
+                'id': id,
+                'text': text,
+                'start_time': start_time,
+                'end_time': end_time,
+                'segment_start': segment_start,
+                'segment_end': segment_end
+            })
+
+            #print(f"Segment {id}: {segment_start}:{segment_end}...")
 
             output = f"id: {id}\n{start_time} - {end_time}\n{text}\n\n"
             self.conversation += output

@@ -4,6 +4,7 @@ runs/
 *.mp3
 *.yaml
 *.yml
+*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -44,6 +45,7 @@ env/
 tmp/*.mp3
 tmp/*.wav
 tmp/*.mp4
+tmp/*.html
 
 # Ignore 
 

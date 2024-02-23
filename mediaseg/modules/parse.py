@@ -2,16 +2,22 @@ import os
 import uuid
 from librosa.core import audio
 import moviepy.editor as mp
+from datetime import datetime, timedelta
 from ..app_helper import print_error, is_avi_file
 import librosa
 
 from .transcribe import Transcribe
 
 class Parse:
-    def __init__(self, file : str ="", threshold : int =5, will_segment=False):
+    def __init__(self, file : str ="", threshold : int =5, will_segment=False, date_str = "", start_time = ""):
         self.file           = file
         self.threshold      = threshold
         self.will_segment   = will_segment
+        self.date_str       = date_str
+        self.start_time     = start_time
+
+        self.base_time = datetime.strptime(self.date_str + " " + self.start_time, "%Y-%m-%d %H:%M:%S")
+        
 
     def execute(self):
         if not os.path.exists(self.file):
@@ -38,7 +44,7 @@ class Parse:
         audio_clip.write_audiofile(audio_file)
 
         print("Transcribing...")
-        self.transcriber = Transcribe(audio_file=audio_file)
+        self.transcriber = Transcribe(audio_file=audio_file, base_time=self.base_time)
         self.transcriber.execute()
 
         print(f"Average Speech Length: {self.transcriber.ave_speech_len}")

@@ -19,5 +19,14 @@ mkdir tmp
 ## Usage
 
 ```
-python -m mediaseg --file [path_to_file]
+python -m mediaseg --file [path_to_file] --out-dir [path_to_dir] --date [yyyy-mm-dd] --start-time [xx:xx:xx] --end-time [xx:xx:xx] --mode [mode]
 ```
+
+### Options
+
+* `--file`: AVI file location
+* `--out-dir`: Where to dump output of program
+* `--date`: Date of video with format `yyyy-mm-dd` (default is current date)
+* `--start-time`: Start time of the day with format `xx:xx:xx` (default is `10:00:00`)
+* `--end-time`: Start time of the day with format `xx:xx:xx` (default is `22:00:00`)
+* `--mode`: Mode for processing (default is `transcribe-to-html`)
